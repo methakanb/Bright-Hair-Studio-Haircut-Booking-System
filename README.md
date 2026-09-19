@@ -32,7 +32,7 @@
 ## โครงสร้างไฟล์
 
 - [`source-code/`](source-code/) — Source code ของเว็บไซต์
-- [`docs/final_report.pdf`](docs/final_report.pdf) — รายงานโครงการ
+- [`docs/final_report.pdf`](docs/Final_Report.pdf) — รายงานโครงการ
 - [`docs/Final_Slides.pdf`](docs/Final_Slides.pdf) — สไลด์นำเสนอ
 
 ## การใช้งานและข้อควรระวัง
