@@ -1,18 +1,42 @@
-# Bright Hair Studio Booking System
+# Bright Hair Studio Haircut Booking System (COMP IT/IE Y.2568)
 
-PHP/MySQL booking system for customers, stylists, and administrators.
+![Bright Hair Studio — project presentation cover](docs/cover.jpg)
 
-## Setup
-1. Copy `Project/.env.example` to `Project/.env` and configure database and SMTP credentials.
-2. Generate *new* admin and stylist password hashes with `php -r "echo password_hash('NEW_PASSWORD', PASSWORD_DEFAULT), PHP_EOL;"` and set the hash values in `.env`.
-3. Set `APP_URL` to the actual HTTPS URL of the `Project` directory.
-4. Provision the existing MySQL database/schema separately; no customer data or database dump is included.
-5. Configure the web server to deny HTTP access to `.env` and other dotfiles, and serve the `Project` directory.
+**ชื่อโครงการ:** ระบบจองคิวร้านตัดผม Bright Hair Studio  
+**วัตถุประสงค์:** พัฒนาระบบจองคิวออนไลน์ให้ลูกค้าเลือกบริการ ช่าง วันที่และช่วงเวลาที่ว่างได้ด้วยตนเอง ลดความยุ่งยากในการจัดการคิว และสนับสนุนการทำงานของช่างกับผู้ดูแลร้าน  
+**ระยะเวลาโครงการ:** 17 มีนาคม – 20 เมษายน 2569  
+**จำนวนสมาชิกที่ร่วมทำ:** 6 คน
 
-## Security notes
-- Do not commit `.env`, real database dumps, customer data, or SMTP app passwords.
-- Rotate the database password and SMTP app password that were embedded in the original source before deployment.
-- Existing stylist login uses a shared password hash and stylist ID; migrate to per-stylist password hashes before production use.
-- Review authorization, CSRF, and other application security before using this as a public production service.
-- `seed_db.php`, `migrate_services_promotions.php`, and `test_schema.php` are excluded because they are unprotected maintenance/debug endpoints; run migrations offline if needed.
-- Confirm you have permission to redistribute images and bundled PHPMailer code.
+## ฟังก์ชันหลัก
+
+- สมัครสมาชิก เข้าสู่ระบบ และขอรีเซ็ตรหัสผ่านผ่านอีเมล
+- เลือกบริการ ช่าง วันที่และเวลาสำหรับจองคิวออนไลน์
+- ดูรายการจอง ยกเลิกการจอง ดูประวัติและเขียนรีวิว
+- แสดงรายการบริการ ราคา และโปรโมชัน
+- ให้ช่างดูตารางงาน ลูกค้าที่รับผิดชอบ สถิติงาน และส่งคำขอลา
+- ให้แอดมินจัดการคิวออนไลน์/Walk-in ลูกค้า ช่าง บริการ โปรโมชัน และรายงานสรุป
+
+## ผู้ใช้งาน
+
+- **ลูกค้า (Customer):** เลือกบริการ จองคิว ติดตามการจองและรีวิว
+- **ช่างตัดผม (Barber / Stylist):** ตรวจสอบตารางงานและประวัติ ส่งคำขอลา และดูสถิติส่วนตัว
+- **ผู้ดูแลระบบ (Administrator):** บริหารคิว บุคลากร ลูกค้า บริการ โปรโมชัน และรายงาน
+
+## เทคโนโลยีที่ใช้
+
+- **Frontend:** HTML, CSS, JavaScript
+- **Backend:** PHP
+- **Database:** MySQL
+- **Email:** PHPMailer (SMTP)
+
+## โครงสร้างไฟล์
+
+- [`source-code/`](source-code/) — Source code ของเว็บไซต์
+- [`docs/final_report.pdf`](docs/final_report.pdf) — รายงานโครงการ
+- [`docs/Final_Slides.pdf`](docs/Final_Slides.pdf) — สไลด์นำเสนอ
+
+## การใช้งานและข้อควรระวัง
+
+Repository นี้จัดทำขึ้นเพื่อแสดงผลงานทางการศึกษา **ไม่ได้แนบฐานข้อมูลจริงหรือไฟล์ `.env` ที่มีรหัสผ่าน** และไม่ใช่เว็บไซต์สาธิตที่เปิดใช้งานได้ทันที การรันระบบต้องมี PHP, MySQL, Web Server และตั้งค่า Environment Variables ตาม [`source-code/.env.example`](source-code/.env.example) รวมถึงเตรียมโครงสร้างฐานข้อมูลให้ตรงกับโค้ด
+
+เมื่อนำไปติดตั้งบนเซิร์ฟเวอร์ ให้กำหนด `APP_URL` ให้ตรงกับ URL จริง และตั้งค่า DB/SMTP และ Password Hash ใหม่ ห้ามเผยแพร่ `.env`, Token, รหัสผ่าน หรือข้อมูลลูกค้าจริง สำหรับการใช้งานจริงควรทบทวนระบบสิทธิ์การเข้าถึงและความปลอดภัยเพิ่มเติม

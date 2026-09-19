@@ -63,9 +63,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     $mail->setFrom(bright_env('SMTP_FROM', bright_env('SMTP_USER', '')), 'Bright Hair Studio');
                     $mail->addAddress($email);
 
-                    // Configure APP_URL in the environment when deploying (e.g. https://example.com/Project).
+                    // Configure APP_URL in the environment when deploying (e.g. https://example.com/source-code).
                     // Do not hard-code the university server URL in public source code.
-                    $base_url = rtrim(bright_env('APP_URL', 'http://localhost/brighthair/Project'), '/');
+                    $base_url = rtrim(bright_env('APP_URL', 'http://localhost/brighthair/source-code'), '/');
                     $reset_link = $base_url . '/reset_password.php?' . http_build_query([
                         'token' => $token,
                         'email' => $email,
